@@ -3,6 +3,7 @@ import 'package:restaurant_app/Home/popular_items.dart';
 
 import '../CustomWidgets/custom_scaffold.dart';
 import 'dishes.dart';
+import 'dishes_1.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -15,11 +16,17 @@ class HomePage extends StatelessWidget {
       title: 'Baharaan\'s Kitchen',
       body: ListView(
         children: [
-          dishes(),
+          Dishes_1(),
+          const SizedBox(
+            // A new Widget to be added tomorrow
+             height: 10,
+          ),
           PopularItems(),
         ],
       )
 
     );
   }
+
+
 }

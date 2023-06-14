@@ -36,13 +36,13 @@ class PopularItems extends StatelessWidget {
                     size: 23, color: primaryTextColor, weight: FontWeight.w800),
               ),
             ),
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  'View More',
-                  style: setTextStyle(
-                      color: primaryColor, weight: FontWeight.bold, size: 16),
-                ))
+            // TextButton(
+            //     onPressed: () {},
+            //     child: Text(
+            //       'View More',
+            //       style: setTextStyle(
+            //           color: primaryColor, weight: FontWeight.bold, size: 16),
+            //     ))
           ],
         ),
         // StreamBuilder<QuerySnapshot>(
