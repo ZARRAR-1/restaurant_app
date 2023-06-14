@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/Home/popular_items.dart';
 
 import '../CustomWidgets/custom_scaffold.dart';
-import 'popular_items.dart';
+import 'dishes.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,7 +13,13 @@ class HomePage extends StatelessWidget {
     return CustomScaffold(
       index: 0,
       title: 'Baharaan\'s Kitchen',
-      body: PopularItems(),
+      body: ListView(
+        children: [
+          dishes(),
+          PopularItems(),
+        ],
+      )
+
     );
   }
 }

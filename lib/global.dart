@@ -8,10 +8,13 @@ final Color primaryTextColor = Colors.black;
 final double titleFontSize = 24;
 
 TextStyle setTextStyle(
-    {color = Colors.white,
+    {
+    // Optional Named parameters with defaults
+    color = Colors.white,
     double size = 14,
     //family = 'Montserrat',
-    weight = FontWeight.normal}) {
+    weight = FontWeight.normal})
+{
   return TextStyle(
     fontWeight: weight,
     color: color,
@@ -22,6 +25,7 @@ TextStyle setTextStyle(
 
 class GlobalCache {
   GlobalCache._privateConstructor();
+
   static final GlobalCache instance = GlobalCache._privateConstructor();
 
   double fontSize = 14;

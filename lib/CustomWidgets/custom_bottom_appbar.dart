@@ -24,7 +24,7 @@ class CustomBottomAppBar extends StatelessWidget {
               onPressed: () {
                 if (index != 0) {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                      MaterialPageRoute(builder: (context) => const HomePage()));
                 }
               }),
           Padding(

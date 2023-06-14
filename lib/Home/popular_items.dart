@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../CustomWidgets/circular_button.dart';
 import '../global.dart';
 
@@ -24,8 +23,8 @@ class PopularItems extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> gridItems = [];
 
-    return ListView(
-      children: <Widget>[
+    return Column(
+      children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -54,8 +53,7 @@ class PopularItems extends StatelessWidget {
         //     return _buildGridView(context, snapshot.data.documents, gridItems);
         //   },
         // ),
-
-        _buildGridView(context, gridItems)
+        _buildGridView(context, gridItems),
       ],
     );
   }
@@ -65,7 +63,7 @@ class PopularItems extends StatelessWidget {
     List<Widget> getRatingRow() {
       List<Widget> row = [];
       for (int i = 0; i < 5; i++) {
-        row.add(const Icon(
+        row.add(Icon(
           Icons.star,
           color: Colors.orangeAccent,
           size: 11,
@@ -85,7 +83,7 @@ class PopularItems extends StatelessWidget {
 
     int counter = 0;
 
-    // documents.forEach((item) {
+    // documents.forEach((item)
     for (int i = 0; i < 12; i++) {
       x.add(
         InkWell(
@@ -116,12 +114,12 @@ class PopularItems extends StatelessWidget {
                       right: 8.0,
                       bottom: 8.0,
                       child: CircularButton(
-                        icon: Icon(
-                          Icons.favorite_border,
-                          color: primaryColor,
-                          size: 15,
-                        ),
-                        onPressed: () {},),
+                          icon: Icon(
+                            Icons.favorite_border,
+                            color: primaryColor,
+                            size: 15,
+                          ),
+                          onPressed: () {}),
                     )
                   ],
                 ),
@@ -143,17 +141,22 @@ class PopularItems extends StatelessWidget {
       );
       counter++;
     }
-
     return GridView.count(
-    shrinkWrap: true,
-    primary: false,
-    padding: const EdgeInsets.all(8),
-    crossAxisSpacing: 8,
-    childAspectRatio: MediaQuery.of(context).size.width /
-    (MediaQuery.of(context).size.height / 1.25),
-    mainAxisSpacing: 8,
-    crossAxisCount: 2,
-    children: x,
+      shrinkWrap: true,
+      primary: false,
+      padding: const EdgeInsets.all(8),
+      crossAxisSpacing: 8,
+      childAspectRatio: MediaQuery
+          .of(context)
+          .size
+          .width /
+          (MediaQuery
+              .of(context)
+              .size
+              .height / 1.25),
+      mainAxisSpacing: 8,
+      crossAxisCount: 2,
+      children: x,
     );
   }
 }
