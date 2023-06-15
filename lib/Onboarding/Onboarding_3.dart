@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../login-signUp/login_page.dart';
+import '../login-signUp/loginSignupChoice.dart';
 
 class Welcome3 extends StatelessWidget {
   const Welcome3({Key? key}) : super(key: key);

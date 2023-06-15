@@ -14,7 +14,7 @@ class Welcome2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(
-              height: 33,
+              height: 0,
             ),
             Flexible(
               flex: 2,
