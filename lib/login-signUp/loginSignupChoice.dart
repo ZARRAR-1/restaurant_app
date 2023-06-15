@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/login-signUp/register.dart';
 
 import '../Home/home_page.dart';
 import '../global.dart';
+import 'login.dart';
 
 class LoginPage extends StatelessWidget {
   final List<Tab> myTabs = <Tab>[
@@ -33,16 +35,8 @@ class LoginPage extends StatelessWidget {
               ),
               Expanded(
                 child: TabBarView(children: [
-                  // UserAuthPage(),
-                  // RegistrationPage(),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => (HomePage()))));
-                      },
-                      child: const Text('To Home'))
+                  UserAuthPage(),
+                  RegistrationPage(),
                 ]),
               ),
             ],

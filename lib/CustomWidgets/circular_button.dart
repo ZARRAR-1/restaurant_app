@@ -13,14 +13,14 @@ class CircularButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      shape: new CircleBorder(),
-      elevation: 4.0,
+      shape: const CircleBorder(),
+      elevation: 5.0,
       fillColor: bgColor,
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(5.0),
       onPressed: onPressed,
       child: CircleAvatar(
-        child: icon,
         backgroundColor: Colors.transparent,
+        child: icon,
       ),
     );
   }
