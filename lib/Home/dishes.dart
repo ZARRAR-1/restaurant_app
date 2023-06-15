@@ -49,7 +49,7 @@ class dishes extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 4,
+          height: deviceHeight / 4,
           width: deviceWidth,
           child: ListView(
 
