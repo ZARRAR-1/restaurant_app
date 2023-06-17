@@ -36,6 +36,14 @@ class PopularItems extends StatelessWidget {
                     size: 23, color: primaryTextColor, weight: FontWeight.w800),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text(
+                'View More',
+                style: setTextStyle(
+                    color: primaryColor, weight: FontWeight.bold, size: 16),
+              ),
+            ),
             // TextButton(
             //     onPressed: () {},
             //     child: Text(
@@ -63,7 +71,7 @@ class PopularItems extends StatelessWidget {
     List<Widget> getRatingRow() {
       List<Widget> row = [];
       for (int i = 0; i < 5; i++) {
-        row.add(Icon(
+        row.add(const Icon(
           Icons.star,
           color: Colors.orangeAccent,
           size: 11,

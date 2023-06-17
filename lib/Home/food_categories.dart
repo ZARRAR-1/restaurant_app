@@ -4,88 +4,69 @@ import 'package:restaurant_app/global.dart';
 class foodCategories extends StatelessWidget {
   const foodCategories({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final double deviceHeight = MediaQuery.of(context).size.height;
-    final double deviceWidth = MediaQuery.of(context).size.width;
-    return ListView(
-      scrollDirection: Axis.horizontal,
+    // final double deviceWidth = MediaQuery.of(context).size.width;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Container(
-        //   height: MediaQuery.of(context).size.height / 5,
-        //   width: MediaQuery.of(context).size.width / 3,
-        //   color: Colors.greenAccent,
-        // ),
-        // Container(
-        //   height: MediaQuery.of(context).size.height / 5,
-        //   width: MediaQuery.of(context).size.width / 3,
-        //   color: Colors.redAccent,
-        // ),
-        // Container(
-        //   height: MediaQuery.of(context).size.height / 5,
-        //   width: MediaQuery.of(context).size.width / 3,
-        //   color: Colors.blueAccent,
-        // ),
-        // Container(
-        //   height: MediaQuery.of(context).size.height / 5,
-        //   width: MediaQuery.of(context).size.width / 3,
-        //   color: Colors.amberAccent,
-        // ),
-        categoryCard(
-            const Icon(Icons.local_drink_rounded), 'Drinks', '5 Items', context),
-        categoryCard(Icon(Icons.energy_savings_leaf_rounded), 'Miscellaneous',
-            '20 Items', context),
-        categoryCard(
-            Icon(Icons.signal_wifi_0_bar_outlined), 'Desserts', '9 Items', context),
-        categoryCard(Icon(Icons.fastfood_rounded), 'Fast Food', '5 Items', context),
-        categoryCard(Icon(Icons.set_meal_rounded), 'Meals', '15 Items', context),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            'Food Categories',
+            style: setTextStyle(
+                size: 23, color: primaryTextColor, weight: FontWeight.w800),
+          ),
+        ),
+        SizedBox(
+          height: deviceHeight / 8,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              categoryCard(Image.asset("images/drinks.png"), 'Drinks',
+                  '5 Items', context),
+              categoryCard(Image.asset("images/others.png"),
+                  'Others', '20 Items', context),
+              categoryCard(Image.asset("images/desserts.png",),
+                  'Desserts', '9 Items', context),
+              categoryCard(Image.asset("images/fastfood.png",), 'Fast Food',
+                  '5 Items', context),
+              categoryCard(Image.asset("images/meals.png",), 'Meals',
+                  '15 Items', context),
+            ],
+          ),
+        ),
       ],
     );
   }
 
-  Widget categoryCard(Icon icon, String title, String num, BuildContext context) {
+  Widget categoryCard(
+       icon, String title, String num, BuildContext context) {
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Card(
+          elevation: 5,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Container(
-            height:30,
+          child: SizedBox(
             width: MediaQuery.of(context).size.width / 2,
             child: ListTile(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               leading: icon,
-              title: Text(title),
+              title: Text(title,style: setTextStyle(color: Colors.black, size: 18, weight: FontWeight.bold),),
               subtitle: Text(num),
               tileColor: secondaryColor,
 
               // iconColor: Colors.transparent,
             ),
           ),
-          // ListTile(
-          //   shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.circular(10),
-          //   ),
-          //   leading: icon,
-          //   title: Text(title),
-          //   subtitle: Text(num),
-          //   tileColor: secondaryColor,
-          //
-          //   // iconColor: Colors.transparent,
-          // ),
         ),
       ),
     );
   }
 }
-
-// Container(
-// color: Colors.green,
-// height: 10,
-// width: 50,
-// ),
