@@ -13,7 +13,8 @@ TextStyle setTextStyle(
     color = Colors.white,
     double size = 14,
     //family = 'Montserrat',
-    weight = FontWeight.normal})
+    weight = FontWeight.normal}
+    )
 {
   return TextStyle(
     fontWeight: weight,

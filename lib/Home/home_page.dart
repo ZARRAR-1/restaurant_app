@@ -16,34 +16,14 @@ class HomePage extends StatelessWidget {
         body: ListView(
           children: [
             Dishes_1(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 5,
+            const SizedBox(
+              height: 40,
+            ),
+            const SizedBox(
               child: foodCategories(),
-              // child: ListView(
-              //   scrollDirection: Axis.horizontal,
-              //   children: [
-              //     Container(
-              //       height: MediaQuery.of(context).size.height / 5,
-              //       width: MediaQuery.of(context).size.width / 3,
-              //       color: Colors.greenAccent,
-              //     ),
-              //     Container(
-              //       height: MediaQuery.of(context).size.height / 5,
-              //       width: MediaQuery.of(context).size.width / 3,
-              //       color: Colors.redAccent,
-              //     ),
-              //     Container(
-              //       height: MediaQuery.of(context).size.height / 5,
-              //       width: MediaQuery.of(context).size.width / 3,
-              //       color: Colors.blueAccent,
-              //     ),
-              //     Container(
-              //       height: MediaQuery.of(context).size.height / 5,
-              //       width: MediaQuery.of(context).size.width / 3,
-              //       color: Colors.amberAccent,
-              //     ),
-              //   ],
-              // ),
+            ),
+            const SizedBox(
+              height: 15,
             ),
             PopularItems(),
           ],

@@ -63,8 +63,8 @@ class UserAuthPage extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
+        const Padding(
+          padding: EdgeInsets.all(16.0),
           child: Divider(
             color: Colors.red,
             height: 0,
