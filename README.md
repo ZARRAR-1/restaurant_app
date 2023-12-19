@@ -1,6 +1,7 @@
 # restaurant_app
 
-A new Flutter project.
+A new Flutter project simulating a UI of a Restaurant application.
+Inspiration from: restaurant_ui_kit from Playstore.
 
 ## Getting Started
 
