@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/Home/popular_items.dart';
-
 import '../CustomWidgets/custom_scaffold.dart';
 import 'dishes_1.dart';
 import 'food_categories.dart';

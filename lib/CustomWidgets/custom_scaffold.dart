@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../global.dart';
 import 'custom_bottom_appbar.dart';
 
@@ -38,7 +37,7 @@ class CustomScaffold extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         foregroundColor: secondaryColor,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         onPressed: () {},
         child: const Icon(Icons.search),
       ),
