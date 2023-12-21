@@ -38,7 +38,9 @@ class CustomScaffold extends StatelessWidget {
         backgroundColor: primaryColor,
         foregroundColor: secondaryColor,
         shape: const CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          //Code search functionality here
+        },
         child: const Icon(Icons.search),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
