@@ -17,8 +17,11 @@ class Welcome1 extends StatelessWidget {
             ),
             Flexible(
               flex: 1,
-              child: Image.asset(
-                'images/first.png',
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 10),
+                child: Image.asset(
+                  'images/first.png',
+                ),
               ),
             ),
             const SizedBox(

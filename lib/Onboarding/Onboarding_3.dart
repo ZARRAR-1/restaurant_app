@@ -21,8 +21,11 @@ class Welcome3 extends StatelessWidget {
               child: Container(
                 height: 350,
                 width: 500,
-                child: Image.asset(
-                  'images/easy-payment.png',
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 10),
+                  child: Image.asset(
+                    'images/easy-payment.png',
+                  ),
                 ),
               ),
             ),

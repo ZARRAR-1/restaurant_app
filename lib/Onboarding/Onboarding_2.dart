@@ -18,8 +18,11 @@ class Welcome2 extends StatelessWidget {
             ),
             Flexible(
               flex: 2,
-              child: Image.asset(
-                'images/delivery.png',
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 10),
+                child: Image.asset(
+                  'images/delivery.png',
+                ),
               ),
             ),
 
