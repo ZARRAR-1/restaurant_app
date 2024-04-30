@@ -22,9 +22,12 @@ class Welcome3 extends StatelessWidget {
                 height: 350,
                 width: 500,
                 child: AnimatedContainer(
-                  duration: Duration(milliseconds: 10),
-                  child: Image.asset(
-                    'images/easy-payment.png',
+                  duration: Duration(milliseconds: 25),
+                  child: Semantics(
+                    label: "Animated image showcasing simple payments via cash on delivery",
+                    child: Image.asset(
+                      'images/easy-payment.png',
+                    ),
                   ),
                 ),
               ),

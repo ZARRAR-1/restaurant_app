@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:restaurant_app/Home/popular_items.dart';
 import '../CustomWidgets/custom_scaffold.dart';
 import 'dishes_1.dart';
@@ -14,17 +16,26 @@ class HomePage extends StatelessWidget {
         title: 'Baharaan\'s Kitchen',
         body: ListView(
           children: [
-            Dishes_1(),
+            Semantics(
+              label: "Newly Added Dishes",
+              child: Dishes_1(),
+            ),
             const SizedBox(
               height: 40,
             ),
-            const SizedBox(
-              child: foodCategories(),
+            SizedBox(
+              child: Semantics(
+                label: 'Food Categories',
+                child: const foodCategories(),
+              ),
             ),
             const SizedBox(
               height: 15,
             ),
-            PopularItems(),
+            Semantics(
+              label: 'Popular Items',
+              child: PopularItems(),
+            ),
           ],
         ));
   }

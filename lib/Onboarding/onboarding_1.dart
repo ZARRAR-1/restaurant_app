@@ -18,9 +18,12 @@ class Welcome1 extends StatelessWidget {
             Flexible(
               flex: 1,
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 10),
-                child: Image.asset(
-                  'images/first.png',
+                duration: Duration(milliseconds: 25),
+                child: Semantics(
+                  label: 'Animated image showcasing that fresh food is always served',
+                  child: Image.asset(
+                    'images/first.png',
+                  ),
                 ),
               ),
             ),
