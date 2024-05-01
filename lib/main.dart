@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      showSemanticsDebugger: true,
+      // showSemanticsDebugger: true, //Disabling touch on next button
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.

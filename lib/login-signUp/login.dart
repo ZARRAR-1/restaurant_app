@@ -11,7 +11,8 @@ class UserAuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: 'User Authorization Page; First field to enter user mane and second field to enter password',
+      label:
+          'User Authorization Page; First field to enter user mane and second field to enter password',
       child: Column(
         children: <Widget>[
           Padding(
@@ -37,8 +38,8 @@ class UserAuthPage extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'Forgot Password?',
-                  style:
-                      setTextStyle(color: primaryColor, weight: FontWeight.w500),
+                  style: setTextStyle(
+                      color: primaryColor, weight: FontWeight.w500),
                 )),
           ),
           Padding(
@@ -50,7 +51,8 @@ class UserAuthPage extends StatelessWidget {
                 label: 'A button to tap to login',
                 child: ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(primaryColor),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -58,8 +60,17 @@ class UserAuthPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => const HomePage()));
+                    // Navigator.of(context).pushReplacement(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const HomePage(),
+                    //   ),
+                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
                   },
                   child: Text(
                     'LOGIN',

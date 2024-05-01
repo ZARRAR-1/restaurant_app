@@ -10,7 +10,8 @@ class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: 'User Registration Page; first field to enter username , second field for email and third field for password',
+      label:
+          'User Registration Page; first field to enter username , second field for email and third field for password',
       child: Column(
         children: <Widget>[
           Padding(
@@ -44,10 +45,14 @@ class RegistrationPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const HomePage()));
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(primaryColor),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),

@@ -2,8 +2,28 @@ import 'package:flutter/material.dart';
 
 import '../login-signUp/loginSignupChoice.dart';
 
-class Welcome3 extends StatelessWidget {
+class Welcome3 extends StatefulWidget {
   const Welcome3({Key? key}) : super(key: key);
+
+  @override
+  State<Welcome3> createState() => _Welcome3State();
+}
+
+class _Welcome3State extends State<Welcome3> {
+  double _opacity = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      Duration.zero,
+      () {
+        setState(() {
+          _opacity = 1.0;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +41,13 @@ class Welcome3 extends StatelessWidget {
               child: Container(
                 height: 350,
                 width: 500,
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 25),
-                  child: Semantics(
-                    label: "Animated image showcasing simple payments via cash on delivery",
+                child: Semantics(
+                  label:
+                      "Animated image showcasing simple payments via cash on delivery",
+                  child: AnimatedOpacity(
+                    duration: const Duration(seconds: 2),
+                    opacity: _opacity,
+                    curve: Curves.easeIn,
                     child: Image.asset(
                       'images/easy-payment.png',
                     ),
@@ -80,8 +103,10 @@ class Welcome3 extends StatelessWidget {
                   child: Container(
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: ((context) => (LoginPage()))));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => (LoginPage()))));
                       },
                       child: const Text(
                         'Next',
@@ -93,7 +118,6 @@ class Welcome3 extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ],
             ),
             // const SizedBox(

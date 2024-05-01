@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/login-signUp/register.dart';
 
-import '../Home/home_page.dart';
 import '../global.dart';
 import 'login.dart';
 

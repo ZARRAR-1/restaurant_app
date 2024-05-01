@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/Onboarding/Onboarding_2.dart';
 
-class Welcome1 extends StatelessWidget {
+class Welcome1 extends StatefulWidget {
   const Welcome1({Key? key}) : super(key: key);
+
+  @override
+  State<Welcome1> createState() => _Welcome1State();
+}
+
+class _Welcome1State extends State<Welcome1> {
+  double _opacity = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      setState(() {
+        _opacity = 1.0;
+      });
+    },);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +34,13 @@ class Welcome1 extends StatelessWidget {
             ),
             Flexible(
               flex: 1,
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: 25),
-                child: Semantics(
-                  label: 'Animated image showcasing that fresh food is always served',
+              child: Semantics(
+                label:
+                'Animated image showcasing that fresh food is always served',
+                child: AnimatedOpacity(
+                  duration: const Duration(seconds: 2),
+                  opacity: _opacity,
+                  curve: Curves.easeIn,
                   child: Image.asset(
                     'images/first.png',
                   ),
@@ -50,7 +70,6 @@ class Welcome1 extends StatelessWidget {
                 ],
               ),
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -77,8 +96,11 @@ class Welcome1 extends StatelessWidget {
                   child: Container(
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: ((context) => (const Welcome2()))));
+                        print('Next button pressed');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => (const Welcome2()))));
                       },
                       child: const Text(
                         'Next',
@@ -90,7 +112,6 @@ class Welcome1 extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ],
             ),
           ],
