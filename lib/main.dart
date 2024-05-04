@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'Onboarding/onboarding_1.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {

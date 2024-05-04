@@ -8,17 +8,58 @@ class Welcome1 extends StatefulWidget {
   State<Welcome1> createState() => _Welcome1State();
 }
 
-class _Welcome1State extends State<Welcome1> {
-  double _opacity = 0.0;
+class _Welcome1State extends State<Welcome1>
+    with SingleTickerProviderStateMixin {
+  late Animation<double> _image_animation;
+  late Animation<double> _text_animation;
+  late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      setState(() {
-        _opacity = 1.0;
-      });
-    },);
+    Future.delayed(
+      Duration.zero,
+      () {
+        setState(
+          () {
+            _controller = AnimationController(
+              duration: const Duration(seconds: 3),
+              // Extend duration to accommodate both animations
+              vsync: this,
+            );
+
+            _image_animation = Tween(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: _controller,
+                curve: const Interval(
+                  0.0, // Start immediately for the image
+                  0.5, // End halfway through the controller's duration
+                  curve: Curves.easeIn,
+                ),
+              ),
+            );
+            _text_animation = Tween(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: _controller,
+                curve: const Interval(
+                  0.5, // Start halfway through the controller's duration
+                  1.0, // End at the end of the controller's duration
+                  curve: Curves.easeIn,
+                ),
+              ),
+            );
+
+            _controller.forward(); //Start the animation
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -36,11 +77,9 @@ class _Welcome1State extends State<Welcome1> {
               flex: 1,
               child: Semantics(
                 label:
-                'Animated image showcasing that fresh food is always served',
-                child: AnimatedOpacity(
-                  duration: const Duration(seconds: 2),
-                  opacity: _opacity,
-                  curve: Curves.easeIn,
+                    'Animated image showcasing that fresh food is always served',
+                child: FadeTransition(
+                  opacity: _image_animation,
                   child: Image.asset(
                     'images/first.png',
                   ),
@@ -50,64 +89,62 @@ class _Welcome1State extends State<Welcome1> {
             const SizedBox(
               height: 50,
             ),
-            const Flexible(
+            Flexible(
               flex: 1,
-              child: Column(
-                children: [
-                  Text(
-                    '\nFresh Food',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 33,
-                      fontWeight: FontWeight.w600,
+              child: FadeTransition(
+                opacity: _text_animation,
+                child: const Column(
+                  children: [
+                    Text(
+                      '\nFresh Food',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 33,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '\nFresh food made from the finest\ningredients and always served hot!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                  ),
-                ],
+                    Text(
+                      '\nFresh food made from the finest\ningredients and always served hot!',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Flexible(
-                  child: Container(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Skip',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Skip',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  child: const Icon(
-                    Icons.more_horiz_rounded,
-                  ),
+                const Icon(
+                  Icons.more_horiz_rounded,
                 ),
                 Flexible(
-                  child: Container(
-                    child: TextButton(
-                      onPressed: () {
-                        print('Next button pressed');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => (const Welcome2()))));
-                      },
-                      child: const Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: TextButton(
+                    onPressed: () {
+                      // print('Next button pressed');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => (const Welcome2()))));
+                    },
+                    child: const Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),

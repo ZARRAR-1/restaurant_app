@@ -9,20 +9,58 @@ class Welcome3 extends StatefulWidget {
   State<Welcome3> createState() => _Welcome3State();
 }
 
-class _Welcome3State extends State<Welcome3> {
-  double _opacity = 0.0;
+class _Welcome3State extends State<Welcome3>
+    with SingleTickerProviderStateMixin {
+  // double _opacity = 0.0;
+  late Animation<double> _image_animation;
+  late Animation<double> _text_animation;
+  late AnimationController _controller;
 
-  @override
   void initState() {
     super.initState();
     Future.delayed(
       Duration.zero,
       () {
-        setState(() {
-          _opacity = 1.0;
-        });
+        setState(
+          () {
+            _controller = AnimationController(
+              duration: const Duration(seconds: 3),
+              // Extend duration to accommodate both animations
+              vsync: this,
+            );
+
+            _image_animation = Tween(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: _controller,
+                curve: const Interval(
+                  0.0, // Start immediately for the image
+                  0.5, // End halfway through the controller's duration
+                  curve: Curves.easeIn,
+                ),
+              ),
+            );
+            _text_animation = Tween(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: _controller,
+                curve: const Interval(
+                  0.5, // Start halfway through the controller's duration
+                  1.0, // End at the end of the controller's duration
+                  curve: Curves.easeIn,
+                ),
+              ),
+            );
+
+            _controller.forward(); //Start the animation
+          },
+        );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,10 +82,8 @@ class _Welcome3State extends State<Welcome3> {
                 child: Semantics(
                   label:
                       "Animated image showcasing simple payments via cash on delivery",
-                  child: AnimatedOpacity(
-                    duration: const Duration(seconds: 2),
-                    opacity: _opacity,
-                    curve: Curves.easeIn,
+                  child: FadeTransition(
+                    opacity: _image_animation,
                     child: Image.asset(
                       'images/easy-payment.png',
                     ),
@@ -56,24 +92,28 @@ class _Welcome3State extends State<Welcome3> {
               ),
             ),
 
-            const Flexible(
+            Flexible(
               flex: 1,
-              child: Column(
-                children: [
-                  Text(
-                    'Easy Payment',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 33,
-                      fontWeight: FontWeight.w600,
+              child: FadeTransition(
+                opacity: _text_animation,
+                child: const Column(
+                  children: [
+                    Text(
+                      'Easy Payment',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 33,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '\nSimply Pay Cash on Delivery!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                  ),
-                ],
+                    Text(
+                      '\nSimply Pay Cash on Delivery!',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -81,39 +121,33 @@ class _Welcome3State extends State<Welcome3> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Flexible(
-                  child: Container(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        '',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      '',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  child: const Icon(
-                    Icons.more_horiz_rounded,
-                  ),
+                const Icon(
+                  Icons.more_horiz_rounded,
                 ),
                 Flexible(
-                  child: Container(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => (LoginPage()))));
-                      },
-                      child: const Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => (LoginPage()))));
+                    },
+                    child: const Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
