@@ -3,6 +3,8 @@
 A new Flutter project simulating a UI of a Restaurant application.
 Inspiration from: restaurant_ui_kit from Playstore: https://play.google.com/store/apps/details?id=com.jideguru.restaurant_ui_kit&pcampaignid=web_share
 
+https://github.com/user-attachments/assets/c22ecb9b-b6ac-4625-b364-3c58adb39915
+
 ## Getting Started
 
 This project was a part of semester project for the course of "Software for Mobile Development". Currently, app is just a UI, with functionality under developement. 
